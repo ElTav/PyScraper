@@ -1,0 +1,203 @@
+body {
+	background-color: #fff;
+	height: 100%;
+}
+
+
+#menu {
+	font-size: 19px;
+	font-family: 'Josefin Slab', serif;
+	width: 600px;
+	max-width: 800px;
+	margin: 0 auto;
+	margin-top: 3em;
+
+}
+
+#menu-a {
+	text-decoration: none;
+    display: block;
+	margin-left: .7em;
+	
+}
+
+#menu-a:hover {
+	text-decoration: none;
+    display: block;
+}
+
+
+#name-a {
+	text-decoration: none;
+	margin-left: 8.9em;
+}
+
+#name-a:hover {
+	text-decoration: none;
+}
+
+#body-style {
+    margin: auto;
+	font-family: 'Overlock', cursive;
+	text-align: center;
+	padding:10px;
+	padding-bottom:2em;   
+
+}
+
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:2em;   
+}
+#container {
+   min-height:100%;
+   position:relative;
+}
+ul { 
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+ul li {
+	display: block;
+}
+
+li ul {
+ display: none;
+}
+
+
+li:hover ul {
+	display: block;
+	position: absolute;
+	background: #fff; opacity: 0.95; 
+
+}
+
+
+
+
+div p {
+	text-align: center-right;
+}
+#about {
+	width: 30em;
+	text-align: justify;
+	margin: auto;
+
+}
+
+#image-hover:hover{
+	background-color: transparent;
+}
+
+
+#image-hover span{ 
+	position: relative;
+	display: none;
+	visibility: hidden;
+	color: black;
+	text-decoration: none;
+}
+
+#image-hover span img{ 
+	border-width: 0;
+	padding: 2px;
+}
+
+#image-hover:hover span{
+	visibility: visible;
+	display: block;
+	top: 0;
+}
+
+footer {
+   position:absolute;
+   text-align: center;
+   bottom:0;
+   width:99%;
+   height:2em;  
+}
+
+#name-nav {
+	margin-right: 0;
+    overflow: hidden;
+    float: left;
+	position: absolute;
+	left: 57.8%;
+	top: 8.3%;
+}
+
+
+
+li ul li:hover {
+    font-weight: bold;
+
+}
+
+a {
+	color: black;
+}
+
+
+
+#menu-li {
+    float: left;
+	border-bottom-style: solid;
+    border-width: 1.8px;
+}
+
+#menu-ul {
+    list-style-type: none;
+	margin: 0;
+    padding: 0;
+}
+h2 {
+	font-family: 'Overlock', cursive;
+	text-align: center;
+}
+
+
+
+#console { 
+    position: relative; 
+    height: auto; 
+    width: 400px; 
+    padding: 13px; 
+    background-color: #000000; 
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+    top: 0px; 
+    border-top: 20px inset #FFFFFF;
+	margin: auto;
+}
+
+#console-link {
+	text-align: left;
+	color: grey;
+}
+
+
+#console-command {
+	text-align: left;
+	margin-left: 5px;
+	color: white;
+}
+
+#console-answer {
+	text-align: left;
+	margin-left: 35px;
+	color: #bdbdbd;
+}
+
+
+
+
+
+
+

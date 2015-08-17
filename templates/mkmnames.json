@@ -1,0 +1,412 @@
+{
+"AQ"
+:"Antiquities"
+
+,"AN"
+:"Arabian Nights"
+
+,"BR"
+:"Battle Royale"
+
+,"ARB" :"Alara Reborn" ,"AL" :"Alliances"
+
+,"AP"
+:"Apocalypse"
+
+,"BD"
+:"Beatdown"
+
+,"ARC"
+:"Archenemy"
+
+,"AVR"
+:"Avacyn Restored"
+
+,"BOK"
+:"Betrayers of Kamigawa"
+
+,"CH"
+:"Chronicles"
+
+,"CRS"
+:"Commander's Arsenal"
+
+,"BNG"
+:"Born of the Gods"
+
+,"CS"
+:"Coldsnap"
+
+,"DKA"
+:"Dark Ascension"
+
+,"CFX"
+:"Conflux"
+
+,"DS"
+:"Darksteel"
+
+,"CHK"
+:"Champions of Kamigawa"
+
+,"6E"
+:"Sixth Edition"
+
+,"DD3EVG"
+:"Duel Decks: Anthology"
+
+,"DD3DVD"
+:"Duel Decks: Anthology"
+
+,"C13"
+:"Commander 2013"
+
+,"DIS"
+:"Dissension"
+
+,"DD3GVL"
+:"Duel Decks: Anthology"
+
+,"C14"
+:"Commander 2014"
+
+,"DD3JVC"
+:"Duel Decks: Anthology"
+
+,"DVD"
+:"Duel Decks: Divine vs. Demonic"
+
+,"DDO"
+:"Duel Decks: Elspeth vs. Kiora"
+
+,"AVB"
+:"Duel Decks: Ajani vs. Nicol Bolas"
+
+,"EVG"
+:"Duel Decks: Elves vs. Goblins"
+
+,"EVT"
+:"Duel Decks: Elspeth vs. Tezzeret"
+
+,"DGM"
+:"Dragon's Maze"
+
+,"GVL"
+:"Duel Decks: Garruk vs. Liliana"
+
+,"HVM"
+:"Duel Decks: Heroes vs. Monsters"
+
+,"JVC"
+:"Duel Decks: Jace vs. Chandra"
+
+,"DTK"
+:"Dragons of Tarkir"
+
+,"IVG"
+:"Duel Decks: Izzet vs. Golgari"
+
+,"KVD"
+:"Duel Decks: Knights vs. Dragons"
+
+,"PVC"
+:"Duel Decks: Phyrexia vs. The Coalition"
+
+,"SVT"
+:"Duel Decks: Sorin vs. Tibalt"
+
+,"DDM"
+:"Duel Decks: Jace vs. Vraska"
+
+,"DDN"
+:"Duel Decks: Speed vs. Cunning"
+
+,"VVK"
+:"Duel Decks: Venser vs. Koth"
+
+,"FE"
+:"Fallen Empires"
+
+,"V14"
+:"From the Vault: Annihilation"
+
+,"EX"
+:"Exodus"
+
+,"DRG"
+:"From the Vault: Dragons"
+
+,"EXL"
+:"From the Vault: Exiled"
+
+,"LEG"
+:"From the Vault: Legends"
+
+,"RLM"
+:"From the Vault: Realms"
+
+,"FD"
+:"Fifth Dawn"
+
+,"RLC"
+:"From the Vault: Relics"
+
+,"EVE"
+:"Eventide"
+
+,"V13"
+:"From the Vault: Twenty"
+
+,"FRF"
+:"Fate Reforged"
+
+,"HL"
+:"Homelands"
+
+,"8E"
+:"Eighth Edition"
+
+,"GP"
+:"Guildpact"
+
+,"FUT"
+:"Future Sight"
+
+,"GTC"
+:"Gatecrash"
+
+,"4E"
+:"Fourth Edition"
+
+,"5E"
+:"Fifth Edition"
+
+,"JU"
+:"Judgment"
+
+,"JOU"
+:"Journey into Nyx"
+
+,"ISD"
+:"Innistrad"
+
+,"IA"
+:"Ice Age"
+
+,"LE"
+:"Legions"
+
+,"KTK"
+:"Khans of Tarkir"
+
+,"IN"
+:"Invasion"
+
+,"LG"
+:"Legends"
+
+,"A"
+:"Alpha"
+
+,"B"
+:"Beta"
+
+,"M10"
+:"Magic 2010"
+
+,"M11"
+:"Magic 2011"
+
+,"LRW"
+:"Lorwyn"
+
+,"M12"
+:"Magic 2012"
+
+,"M13"
+:"Magic 2013"
+
+,"M14"
+:"Magic 2014"
+
+,"M15"
+:"Magic 2015"
+
+,"ORI"
+:"Magic Origins"
+
+,"CNS"
+:"Conspiracy"
+
+,"MD1"
+:"Modern Event Deck 2014"
+
+,"CMD"
+:"Commander"
+
+,"MBS"
+:"Mirrodin Besieged"
+
+,"MM"
+:"Mercadian Masques"
+
+,"MOR"
+:"Morningtide"
+
+,"MR"
+:"Mirrodin"
+
+,"MMA"
+:"Modern Masters"
+
+,"NE"
+:"Nemesis"
+
+,"MI"
+:"Mirage"
+
+,"MM2"
+:"Modern Masters 2015"
+
+,"NPH"
+:"New Phyrexia"
+
+,"PLC"
+:"Planar Chaos"
+
+,"PS"
+:"Planeshift"
+
+,"PCH"
+:"Planechase"
+
+,"PC2"
+:"Planechase 2012"
+
+,"FAL"
+:"Premium Deck Series: Fire & Lightning"
+
+,"GRV"
+:"Premium Deck Series: Graveborn"
+
+,"PT"
+:"Portal"
+
+,"MBP"
+:"Harper Prism Promos"
+
+,"SLI"
+:"Premium Deck Series: Slivers"
+
+,"9E"
+:"Ninth Edition"
+
+,"OD"
+:"Odyssey"
+
+,"ON"
+:"Onslaught"
+
+,"P2"
+:"Portal Second Age"
+
+,"P3"
+:"Portal Three Kingdoms"
+
+,"PY"
+:"Prophecy"
+
+,"SC"
+:"Scourge"
+
+,"SOK"
+:"Saviors of Kamigawa"
+
+,"ROE"
+:"Rise of the Eldrazi"
+
+,"RTR"
+:"Return to Ravnica"
+
+,"SOM"
+:"Scars of Mirrodin"
+
+,"RAV"
+:"Ravnica: City of Guilds"
+
+,"R"
+:"Revised"
+
+,"S2"
+:"Starter 2000"
+
+,"ST"
+:"Starter 1999"
+
+,"SH"
+:"Stronghold"
+
+,"7E"
+:"Seventh Edition"
+
+,"DK"
+:"The Dark"
+
+,"ALA"
+:"Shards of Alara"
+
+,"UFP"
+:"Ugin's Fate Promos"
+
+,"SHM"
+:"Shadowmoor"
+
+,"TSB"
+:"Time Spiral"
+
+,"UG"
+:"Unglued"
+
+,"TO"
+:"Torment"
+
+,"TE"
+:"Tempest"
+
+,"THS"
+:"Theros"
+
+,"UNH"
+:"Unhinged"
+
+,"10E"
+:"Tenth Edition"
+
+,"TSP"
+:"Time Spiral"
+
+,"UL"
+:"Urza's Legacy"
+
+,"UD"
+:"Urza's Destiny"
+
+,"VNG"
+:"Vanguard"
+
+,"VI"
+:"Visions"
+
+,"WL"
+:"Weatherlight"
+
+,"WWK"
+:"Worldwake"
+
+,"U"
+:"Unlimited"
+
+,"US"
+:"Urza's Saga"
+,"ZEN" : "Zendikar" 
+}
