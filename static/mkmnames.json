@@ -1,19 +1,21 @@
 {
-"AQ"
+"ATQ"
 :"Antiquities"
 
-,"AN"
+,"ARN"
 :"Arabian Nights"
 
-,"BR"
+,"BRB"
 :"Battle Royale"
 
-,"ARB" :"Alara Reborn" ,"AL" :"Alliances"
+,"ARB" :"Alara Reborn" 
 
-,"AP"
+,"ALL" :"Alliances"
+
+,"APC"
 :"Apocalypse"
 
-,"BD"
+,"BTD"
 :"Beatdown"
 
 ,"ARC"
@@ -25,37 +27,34 @@
 ,"BOK"
 :"Betrayers of Kamigawa"
 
-,"CH"
+,"CHR"
 :"Chronicles"
 
-,"CRS"
+,"CMA"
 :"Commander's Arsenal"
 
 ,"BNG"
 :"Born of the Gods"
 
-,"CS"
+,"CSP"
 :"Coldsnap"
 
 ,"DKA"
 :"Dark Ascension"
 
-,"CFX"
+,"CON"
 :"Conflux"
 
-,"DS"
+,"DST"
 :"Darksteel"
 
 ,"CHK"
 :"Champions of Kamigawa"
 
-,"6E"
+,"6ED"
 :"Sixth Edition"
 
-,"DD3EVG"
-:"Duel Decks: Anthology"
-
-,"DD3DVD"
+,"DD3"
 :"Duel Decks: Anthology"
 
 ,"C13"
@@ -64,55 +63,50 @@
 ,"DIS"
 :"Dissension"
 
-,"DD3GVL"
-:"Duel Decks: Anthology"
-
 ,"C14"
 :"Commander 2014"
 
-,"DD3JVC"
-:"Duel Decks: Anthology"
 
-,"DVD"
+,"DDC"
 :"Duel Decks: Divine vs. Demonic"
 
 ,"DDO"
 :"Duel Decks: Elspeth vs. Kiora"
 
-,"AVB"
+,"DDH"
 :"Duel Decks: Ajani vs. Nicol Bolas"
 
 ,"EVG"
 :"Duel Decks: Elves vs. Goblins"
 
-,"EVT"
+,"DDF"
 :"Duel Decks: Elspeth vs. Tezzeret"
 
 ,"DGM"
 :"Dragon's Maze"
 
-,"GVL"
+,"DDD"
 :"Duel Decks: Garruk vs. Liliana"
 
-,"HVM"
+,"DDL"
 :"Duel Decks: Heroes vs. Monsters"
 
-,"JVC"
+,"DD2"
 :"Duel Decks: Jace vs. Chandra"
 
 ,"DTK"
 :"Dragons of Tarkir"
 
-,"IVG"
+,"DDJ"
 :"Duel Decks: Izzet vs. Golgari"
 
-,"KVD"
+,"DDG"
 :"Duel Decks: Knights vs. Dragons"
 
-,"PVC"
+,"DDE"
 :"Duel Decks: Phyrexia vs. The Coalition"
 
-,"SVT"
+,"DDK"
 :"Duel Decks: Sorin vs. Tibalt"
 
 ,"DDM"
@@ -121,34 +115,34 @@
 ,"DDN"
 :"Duel Decks: Speed vs. Cunning"
 
-,"VVK"
+,"DDI"
 :"Duel Decks: Venser vs. Koth"
 
-,"FE"
+,"FEM"
 :"Fallen Empires"
 
 ,"V14"
 :"From the Vault: Annihilation"
 
-,"EX"
+,"EXO"
 :"Exodus"
 
-,"DRG"
+,"DRB"
 :"From the Vault: Dragons"
 
-,"EXL"
+,"V09"
 :"From the Vault: Exiled"
 
-,"LEG"
+,"V11"
 :"From the Vault: Legends"
 
-,"RLM"
+,"V12"
 :"From the Vault: Realms"
 
-,"FD"
+,"5DN"
 :"Fifth Dawn"
 
-,"RLC"
+,"V10"
 :"From the Vault: Relics"
 
 ,"EVE"
@@ -160,13 +154,13 @@
 ,"FRF"
 :"Fate Reforged"
 
-,"HL"
+,"HML"
 :"Homelands"
 
-,"8E"
+,"8ED"
 :"Eighth Edition"
 
-,"GP"
+,"GPT"
 :"Guildpact"
 
 ,"FUT"
@@ -175,13 +169,13 @@
 ,"GTC"
 :"Gatecrash"
 
-,"4E"
+,"4ED"
 :"Fourth Edition"
 
-,"5E"
+,"5ED"
 :"Fifth Edition"
 
-,"JU"
+,"JUD"
 :"Judgment"
 
 ,"JOU"
@@ -190,25 +184,25 @@
 ,"ISD"
 :"Innistrad"
 
-,"IA"
+,"ICE"
 :"Ice Age"
 
-,"LE"
+,"LGN"
 :"Legions"
 
 ,"KTK"
 :"Khans of Tarkir"
 
-,"IN"
+,"INV"
 :"Invasion"
 
-,"LG"
+,"LEG"
 :"Legends"
 
-,"A"
+,"LEA"
 :"Alpha"
 
-,"B"
+,"LEB"
 :"Beta"
 
 ,"M10"
@@ -247,22 +241,22 @@
 ,"MBS"
 :"Mirrodin Besieged"
 
-,"MM"
+,"MMQ"
 :"Mercadian Masques"
 
 ,"MOR"
 :"Morningtide"
 
-,"MR"
+,"MRD"
 :"Mirrodin"
 
 ,"MMA"
 :"Modern Masters"
 
-,"NE"
+,"NMS"
 :"Nemesis"
 
-,"MI"
+,"MIR"
 :"Mirage"
 
 ,"MM2"
@@ -274,7 +268,7 @@
 ,"PLC"
 :"Planar Chaos"
 
-,"PS"
+,"PLS"
 :"Planeshift"
 
 ,"PCH"
@@ -283,40 +277,40 @@
 ,"PC2"
 :"Planechase 2012"
 
-,"FAL"
+,"PD2"
 :"Premium Deck Series: Fire & Lightning"
 
 ,"GRV"
 :"Premium Deck Series: Graveborn"
 
-,"PT"
+,"POR"
 :"Portal"
 
 ,"MBP"
 :"Harper Prism Promos"
 
-,"SLI"
+,"PDS"
 :"Premium Deck Series: Slivers"
 
-,"9E"
+,"9ED"
 :"Ninth Edition"
 
-,"OD"
+,"ODY"
 :"Odyssey"
 
-,"ON"
+,"ONS"
 :"Onslaught"
 
-,"P2"
+,"P02"
 :"Portal Second Age"
 
-,"P3"
+,"PTK"
 :"Portal Three Kingdoms"
 
-,"PY"
+,"PCY"
 :"Prophecy"
 
-,"SC"
+,"SCG"
 :"Scourge"
 
 ,"SOK"
@@ -334,22 +328,22 @@
 ,"RAV"
 :"Ravnica: City of Guilds"
 
-,"R"
+,"REV"
 :"Revised"
 
-,"S2"
+,"S00"
 :"Starter 2000"
 
-,"ST"
+,"S99"
 :"Starter 1999"
 
-,"SH"
+,"STH"
 :"Stronghold"
 
-,"7E"
+,"7ED"
 :"Seventh Edition"
 
-,"DK"
+,"DRK"
 :"The Dark"
 
 ,"ALA"
@@ -364,13 +358,13 @@
 ,"TSB"
 :"Time Spiral"
 
-,"UG"
+,"UGL"
 :"Unglued"
 
-,"TO"
+,"TOR"
 :"Torment"
 
-,"TE"
+,"TMP"
 :"Tempest"
 
 ,"THS"
@@ -385,28 +379,29 @@
 ,"TSP"
 :"Time Spiral"
 
-,"UL"
+,"ULG"
 :"Urza's Legacy"
 
-,"UD"
+,"UDS"
 :"Urza's Destiny"
 
 ,"VNG"
 :"Vanguard"
 
-,"VI"
+,"VIS"
 :"Visions"
 
-,"WL"
+,"WTH"
 :"Weatherlight"
 
 ,"WWK"
 :"Worldwake"
 
-,"U"
+,"UNL"
 :"Unlimited"
 
-,"US"
+,"USG"
 :"Urza's Saga"
+
 ,"ZEN" : "Zendikar" 
 }
