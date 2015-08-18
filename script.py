@@ -17,10 +17,13 @@ def cardinfo(cardname, setabbr):
     if page is None: #something got entered incorrectly
         return ["Uh oh, something went wrong. Check both your name and set code and try again"]
     else:
-        setnameurl = 'http://api.mtgapi.com/v2/sets?code=' + setabbr
-        setname = requests.get(setnameurl).json()['sets'][0]['name']
-        cardname = page[0]['name']
-        return [cardname, setname]
+        if setabbr.upper() == 'MM2':
+            setname = 'Modern Masters 2015' #edge case
+        else:
+            setnameurl = 'http://api.mtgapi.com/v2/sets?code=' + setabbr
+            setname = requests.get(setnameurl).json()['sets'][0]['name']
+    cardname = page[0]['name']
+    return [cardname, setname]
 
 # Gets the current USD to EUR exchange rate
 def getexchangerate():
@@ -57,7 +60,7 @@ def allindices(string, sub):
         listindex.append(i)
         i = string.find(sub, i + 1)
     return listindex
-def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPlayer and ChannelFireball
+def getmtggoldfishprices(cardname, setname): # Gets current prices from several vendors
     goldfishurl = 'http://www.mtggoldfish.com/price/'
     goldfishurl += setname
     goldfishurl += '/' + cardname
@@ -66,11 +69,11 @@ def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPl
     gfsoup = BeautifulSoup(goldfishpage.text, "html.parser")
     
     prices = []
-    #both = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"}) #tcgplayer-3, 
+   
     
     #sellprices = gfsoup.find_all(attrs={"class": "price-card-sell-prices"})
     sellprices = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"})
-    #print(sellprices)
+    
     tcgneeded = True
     abuneeded = True
     ckneeded = True
@@ -109,7 +112,6 @@ def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPl
     return prices
     
 def scrape(cardname, setcode):
-    
     info = cardinfo(cardname, setcode)
     
     if len(info) == 1:
@@ -119,9 +121,10 @@ def scrape(cardname, setcode):
         
     cardname = info[0]
     setname = info[1]
-    
+    print(info)
     
     goldfishprices = getmtggoldfishprices(cardname, setname)
+    
     mkmprice = getmkmprice(cardname, setcode)
     
     mkmUSD = mkmprice.replace(",", ".")
@@ -133,9 +136,8 @@ def scrape(cardname, setcode):
     mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
     
     prices = goldfishprices
+    print(prices)
     prices.insert(0, mkmUSDprice)
     prices.insert(0, mkmprice)
-    
-    
     return prices
-    
+
