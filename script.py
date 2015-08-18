@@ -27,11 +27,11 @@ def cardinfo(cardname, setabbr):
 
 # Gets the current USD to EUR exchange rate
 def getexchangerate():
-    url = 'https://openexchangerates.org/api/latest.json?app_id=33c58ff9ceb84f04ae7f737a00026bbf'
-    page = requests.get(url).json()
-    rates = page['rates']
-    rate = rates['EUR']
-    return rate
+    #url = 'https://openexchangerates.org/api/latest.json?app_id=33c58ff9ceb84f04ae7f737a00026bbf'
+    url = 'https://www.bitstamp.net/api/eur_usd/'
+    page = requests.get(url)
+    rates = page.json()['buy']   
+    return rates
     
 def getmkmprice(cardname, setcode): #Gets the current price from MagicCardMarket
 
@@ -121,22 +121,22 @@ def scrape(cardname, setcode):
         
     cardname = info[0]
     setname = info[1]
-    print(info)
     
+    prices = []
     goldfishprices = getmtggoldfishprices(cardname, setname)
     
     mkmprice = getmkmprice(cardname, setcode)
     
     mkmUSD = mkmprice.replace(",", ".")
     mkmUSD = float(mkmUSD)
-    mkmUSD = mkmUSD / getexchangerate()
+    mkmUSD = float(getexchangerate()) * mkmUSD
     
     mkmUSDprice = 'Magiccardmarket in USD: $' + "{:.2f}".format(mkmUSD) 
-    
+    print(mkmUSDprice)
     mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
     
     prices = goldfishprices
-    print(prices)
+    
     prices.insert(0, mkmUSDprice)
     prices.insert(0, mkmprice)
     return prices
