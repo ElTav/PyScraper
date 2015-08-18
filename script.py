@@ -10,9 +10,12 @@ def cardinfo(cardname, setabbr):
     mtgapiurl += cardname
     mtgapiurl += '&set='
     mtgapiurl += setabbr
-    page = requests.get(mtgapiurl).json()['cards']
+    page = requests.get(mtgapiurl)
+    if page.raise_for_status() is not None: # the request failed
+        return ["The API request failed"]
+    page = page.json()['cards']
     if page is None: #something got entered incorrectly
-        return []
+        return ["Uh oh, something went wrong. Check both your name and set code and try again"]
     else:
         setnameurl = 'http://api.mtgapi.com/v2/sets?code=' + setabbr
         setname = requests.get(setnameurl).json()['sets'][0]['name']
@@ -45,7 +48,15 @@ def getmkmprice(cardname, setcode): #Gets the current price from MagicCardMarket
     mkmsoup = BeautifulSoup(mkmpage.text, "html.parser")
     price = mkmsoup.find("span", {"itemprop":"lowPrice"}).getText()
     return price
-    
+
+def allindices(string, sub):
+    listindex = []
+    offset = 0
+    i = string.find(sub, offset)
+    while i >= 0:
+        listindex.append(i)
+        i = string.find(sub, i + 1)
+    return listindex
 def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPlayer and ChannelFireball
     goldfishurl = 'http://www.mtggoldfish.com/price/'
     goldfishurl += setname
@@ -54,24 +65,58 @@ def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPl
     goldfishpage = requests.get(goldfishurl)
     gfsoup = BeautifulSoup(goldfishpage.text, "html.parser")
     
-    both = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"}) #tcgplayer-3, 
+    prices = []
+    #both = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"}) #tcgplayer-3, 
     
-    tcgm = both[3]
-    tcgm = tcgm.find("span", {"class":"btn-shop-price"}).text
-    endbracket = tcgm.find('>')
-    tcgm = 'TCG Mid: ' + tcgm[:endbracket]
+    #sellprices = gfsoup.find_all(attrs={"class": "price-card-sell-prices"})
+    sellprices = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"})
+    #print(sellprices)
+    tcgneeded = True
+    abuneeded = True
+    ckneeded = True
+    cfbneeded = 0
+    for entry in sellprices:
+        if "tcgplayer" in entry.text:
+            if tcgneeded: 
+                tcgm = entry.find("span", {"class":"btn-shop-price"}).text
+                tcgm = 'TCG Mid: ' + tcgm[3:]             
+                tcgneeded = False          
+                prices.append(tcgm)
+        if "channel fireball" in entry.text:          
+            if cfbneeded == 0:  
+                cfbprice = entry.find("span", {"class":"btn-shop-price"}).text
+                cfbprice = 'Channel Fireball: ' + cfbprice[3:]
+                prices.append(cfbprice)
+            if cfbneeded == 3:
+                cfbprice = entry.find("span", {"class":"btn-shop-price"}).text
+                cfbprice = 'Channel Fireball buylist: ' + cfbprice[3:]
+                cfbneeded += 1
+                prices.append(cfbprice)
+            cfbneeded += 1
+        if "abu games" in entry.text:
+            if abuneeded: 
+                abu = entry.find("span", {"class":"btn-shop-price"}).text
+                abu = 'ABU Games Buylist: ' + abu[3:]             
+                abuneeded = False          
+                prices.append(abu)
+        if "cardkingdom" in entry.text:
+            if ckneeded: 
+                ck = entry.find("span", {"class":"btn-shop-price"}).text
+                ck = 'Card Kingdom Buylist: ' + ck[3:]             
+                ckneeded = False          
+                prices.append(ck)
     
-    cfbprice = both[1]
-    cfbprice = cfbprice.find("span", {"class":"btn-shop-price"}).text
-    endbracket = cfbprice.find('>')
-    cfbprice = 'Channel Fireball: ' + cfbprice[:endbracket]
-    return [cfbprice, tcgm]
+    return prices
     
 def scrape(cardname, setcode):
     
     info = cardinfo(cardname, setcode)
-    if len(info) < 1:
-        return ["Uh oh, something went wrong. Check both your name and set code and try again"]
+    
+    if len(info) == 1:
+        info = info[0]
+        ''.join(info)
+        return [info]
+        
     cardname = info[0]
     setname = info[1]
     
@@ -86,11 +131,11 @@ def scrape(cardname, setcode):
     mkmUSDprice = 'Magiccardmarket in USD: $' + "{:.2f}".format(mkmUSD) 
     
     mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
-    print([mkmprice, mkmUSDprice])
-    cfbprice = goldfishprices[0]
-    tcgm = goldfishprices[1]
     
+    prices = goldfishprices
+    prices.insert(0, mkmUSDprice)
+    prices.insert(0, mkmprice)
     
-    prices = [mkmprice, mkmUSDprice, cfbprice, tcgm]
     
     return prices
+    
