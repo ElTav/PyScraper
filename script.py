@@ -1,4 +1,3 @@
-from decimal import Decimal
 import sys
 import json
 import requests
@@ -68,10 +67,7 @@ def getmtggoldfishprices(cardname, setname): # Gets the current price from TcgPl
     cfbprice = 'Channel Fireball: ' + cfbprice[:endbracket]
     return [cfbprice, tcgm]
     
-def main(args):
-    
-    cardname = args[1]
-    setcode = args[2]
+def scrape(cardname, setcode):
     
     info = cardinfo(cardname, setcode)
     if len(info) < 1:
@@ -89,7 +85,7 @@ def main(args):
     
     mkmUSDprice = 'Magiccardmarket in USD: $' + "{:.2f}".format(mkmUSD) 
     
-    mkmprice = 'Magiccardmarket: €' + mkmprice
+    mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
     print([mkmprice, mkmUSDprice])
     cfbprice = goldfishprices[0]
     tcgm = goldfishprices[1]
@@ -98,6 +94,3 @@ def main(args):
     prices = [mkmprice, mkmUSDprice, cfbprice, tcgm]
     
     return prices
-
-if __name__ == "__main__":
-    main(sys.argv)

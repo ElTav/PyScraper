@@ -2,6 +2,7 @@ import script
 from flask import Flask
 from flask import request
 from flask import render_template
+
 app = Flask(__name__)
  
 
@@ -13,8 +14,7 @@ def index():
 def signup():
     card = request.form['card']
     set = request.form['set']
-    things = ["", card, set]
-    prices = scraper(things)
+    prices = script.scrape(card, set)
     return render_template('cards.html', card=card, prices=prices)
     
     

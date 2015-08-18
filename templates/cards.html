@@ -48,7 +48,15 @@
       <li>{{ price }}</li>
       {% endfor %}
     </ul>
-	<input action="action" type="button" value="Back" onclick="history.go(-1);" />
+	<h3> Another? </h3>
+    <form action="/prices" method="post">
+    <input type="text" placeholder="Card name" name="card"></input>
+	<input type="text" placeholder="Three Letter Set Abbreviation" name="set"></input>
+	<input type="submit" value="Submit"></input>
+    </form>
+    <br>
+    <input action="action" type="button" value="Back" onclick="history.go(-1);" />
+ 
 
 
 <div id="footer">  &copy;2015 Leandro Taveras </div> </div>
