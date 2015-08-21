@@ -60,7 +60,9 @@ def allindices(string, sub):
         listindex.append(i)
         i = string.find(sub, i + 1)
     return listindex
+    
 def getmtggoldfishprices(cardname, setname): # Gets current prices from several vendors
+    cardname = cardname.replace("'", "")
     goldfishurl = 'http://www.mtggoldfish.com/price/'
     goldfishurl += setname
     goldfishurl += '/' + cardname
@@ -74,35 +76,36 @@ def getmtggoldfishprices(cardname, setname): # Gets current prices from several 
     #sellprices = gfsoup.find_all(attrs={"class": "price-card-sell-prices"})
     sellprices = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"})
     
+    
     tcgneeded = True
     abuneeded = True
     ckneeded = True
     cfbneeded = 0
     for entry in sellprices:
-        if "tcgplayer" in entry.text:
+        if "TCGplayer Mid" in entry.text:
             if tcgneeded: 
                 tcgm = entry.find("span", {"class":"btn-shop-price"}).text
                 tcgm = 'TCG Mid: ' + tcgm[3:]             
                 tcgneeded = False          
                 prices.append(tcgm)
-        if "channel fireball" in entry.text:          
+        if "Channel Fireball" in entry.text:          
             if cfbneeded == 0:  
                 cfbprice = entry.find("span", {"class":"btn-shop-price"}).text
                 cfbprice = 'Channel Fireball: ' + cfbprice[3:]
                 prices.append(cfbprice)
             if cfbneeded == 3:
                 cfbprice = entry.find("span", {"class":"btn-shop-price"}).text
-                cfbprice = 'Channel Fireball buylist: ' + cfbprice[3:]
+                cfbprice = 'Channel Fireball Buylist: ' + cfbprice[3:]
                 cfbneeded += 1
                 prices.append(cfbprice)
             cfbneeded += 1
-        if "abu games" in entry.text:
+        if "ABU Games" in entry.text:
             if abuneeded: 
                 abu = entry.find("span", {"class":"btn-shop-price"}).text
                 abu = 'ABU Games Buylist: ' + abu[3:]             
                 abuneeded = False          
                 prices.append(abu)
-        if "cardkingdom" in entry.text:
+        if "Card Kingdom" in entry.text:
             if ckneeded: 
                 ck = entry.find("span", {"class":"btn-shop-price"}).text
                 ck = 'Card Kingdom Buylist: ' + ck[3:]             
@@ -118,7 +121,6 @@ def scrape(cardname, setcode):
         info = info[0]
         ''.join(info)
         return [info]
-        
     cardname = info[0]
     setname = info[1]
     
@@ -132,12 +134,12 @@ def scrape(cardname, setcode):
     mkmUSD = float(getexchangerate()) * mkmUSD
     
     mkmUSDprice = 'Magiccardmarket in USD: $' + "{:.2f}".format(mkmUSD) 
-    print(mkmUSDprice)
     mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
     
     prices = goldfishprices
     
     prices.insert(0, mkmUSDprice)
     prices.insert(0, mkmprice)
+    
     return prices
 
