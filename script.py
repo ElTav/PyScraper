@@ -6,10 +6,9 @@ import urllib3
 
     
 def cardinfo(cardname, setabbr):
-    mtgapiurl = 'http://api.mtgapi.com/v2/cards?name='
-    mtgapiurl += cardname
-    mtgapiurl += '&set='
-    mtgapiurl += setabbr
+    
+    mtgapiurl = 'http://api.mtgapi.com/v2/cards?name={}&set={}'.format(cardname, setabbr)
+    
     page = requests.get(mtgapiurl)
     if page.raise_for_status() is not None: # the request failed
         return ["The API request failed"]
@@ -27,7 +26,6 @@ def cardinfo(cardname, setabbr):
 
 # Gets the current USD to EUR exchange rate
 def getexchangerate():
-    #url = 'https://openexchangerates.org/api/latest.json?app_id=33c58ff9ceb84f04ae7f737a00026bbf'
     url = 'https://www.bitstamp.net/api/eur_usd/'
     page = requests.get(url)
     rates = page.json()['buy']   
@@ -35,15 +33,15 @@ def getexchangerate():
     
 def getmkmprice(cardname, setcode): #Gets the current price from MagicCardMarket
 
-    mkmbase = 'https://www.magiccardmarket.eu/Products/Singles/'
+    
     
     file = open('mkmnames.json')
     str = file.read()
     mkmnames = json.loads(str)
-    
+
     setname = mkmnames[setcode.upper()]
-    mkmbase += setname + "/"
-    mkmbase += cardname
+    mkmbase = 'https://www.magiccardmarket.eu/Products/Singles/{}/{}'.format(setname, cardname)
+
     mkmbase = mkmbase.replace("'", "%27")
     mkmbase = mkmbase.replace(" ", "+") #complete the magiccardmarket.eu url
 
@@ -63,17 +61,14 @@ def allindices(string, sub):
     
 def getmtggoldfishprices(cardname, setname): # Gets current prices from several vendors
     cardname = cardname.replace("'", "")
-    goldfishurl = 'http://www.mtggoldfish.com/price/'
-    goldfishurl += setname
-    goldfishurl += '/' + cardname
+    
+    goldfishurl = 'http://www.mtggoldfish.com/price/{}/{}'.format(setname, cardname)
+    
     goldfishurl = goldfishurl.replace("'", "")
     goldfishpage = requests.get(goldfishurl)
     gfsoup = BeautifulSoup(goldfishpage.text, "html.parser")
     
-    prices = []
-   
-    
-    #sellprices = gfsoup.find_all(attrs={"class": "price-card-sell-prices"})
+    prices = []    
     sellprices = gfsoup.find_all(attrs={"class": "btn-shop btn btn-default price-card-purchase-button btn-paper-muted"})
     
     
@@ -81,13 +76,14 @@ def getmtggoldfishprices(cardname, setname): # Gets current prices from several 
     abuneeded = True
     ckneeded = True
     cfbneeded = 0
+    tcgmid = None
     for entry in sellprices:
         if "TCGplayer Mid" in entry.text:
             if tcgneeded: 
                 tcgm = entry.find("span", {"class":"btn-shop-price"}).text
                 tcgm = 'TCG Mid: ' + tcgm[3:]             
                 tcgneeded = False          
-                prices.append(tcgm)
+                tcgmid = tcgm
         if "Channel Fireball" in entry.text:          
             if cfbneeded == 0:  
                 cfbprice = entry.find("span", {"class":"btn-shop-price"}).text
@@ -111,10 +107,52 @@ def getmtggoldfishprices(cardname, setname): # Gets current prices from several 
                 ck = 'Card Kingdom Buylist: ' + ck[3:]             
                 ckneeded = False          
                 prices.append(ck)
-    
+    if tcgmid is not None:
+        prices.insert(0, tcgmid)
     return prices
+def strikezonesell(cardname, setname):
     
+    if setname == "Future Sight":
+        setname = 'Futuresight' #edge case
+    szurl = 'http://shop.strikezoneonline.com/TUser?T={}%20{}&MC=CUSTS&MF=B&BUID=637&ST=D&CMD=Search'.format(cardname, setname)
+    
+    strikezonepage = requests.get(szurl)
+    szsoup = BeautifulSoup(strikezonepage.text, "html.parser")
+    
+    pricetable = szsoup.find('table', attrs={'class':'ItemTable'})
+    if pricetable is None:
+        return 'Not found'
+    pricetablerows = pricetable.find_all('tr')
+    
+    for entry in pricetablerows:  
+        if "Near Mint Normal English" in entry.text:
+            price = entry.find("span").text
+            
+            return 'StrikeZone: {}'.format(price)
+            
+    return 'Not found'
+    
+def strikezonebuy(cardname, setname):
+    if setname == "Future Sight":
+        setname = 'Futuresight' #edge case
+    szurl = 'http://shop.strikezoneonline.com/TUser?T={}%20{}&MC=CUSTS&MF=B&BUID=637&ST=D&M=B'.format(cardname, setname)
+    strikezonepage = requests.get(szurl)
+    szsoup = BeautifulSoup(strikezonepage.text, "html.parser")
+    
+    pricetable = szsoup.find('table', attrs={'class':'ItemTable'})
+    if pricetable is None:
+        return 'Not found'
+    pricetablerows = pricetable.find_all('tr')
+    
+    for entry in pricetablerows:  
+        if "Near Mint Normal English" in entry.text:
+            price = entry.find("span").text
+            
+            return 'StrikeZone Buylist: {}'.format(price)
+            
+    return 'Not found'
 def scrape(cardname, setcode):
+    
     info = cardinfo(cardname, setcode)
     
     if len(info) == 1:
@@ -131,15 +169,24 @@ def scrape(cardname, setcode):
     
     mkmUSD = mkmprice.replace(",", ".")
     mkmUSD = float(mkmUSD)
-    mkmUSD = float(getexchangerate()) * mkmUSD
-    
+    mkmUSD = float(getexchangerate()) * mkmUSD    
     mkmUSDprice = 'Magiccardmarket in USD: $' + "{:.2f}".format(mkmUSD) 
-    mkmprice = 'Magiccardmarket: ' + mkmprice + ' euros'
+    mkmprice = 'Magiccardmarket: {} euros'.format(mkmprice)
     
     prices = goldfishprices
     
+    szsell = strikezonesell(cardname, setname)
+    szbuy = strikezonebuy(cardname, setname)
+    
+    if szbuy != 'Not found':
+        prices.append(szbuy)
+    if szsell != 'Not found':
+        prices.insert(1, szsell)
+       
     prices.insert(0, mkmUSDprice)
     prices.insert(0, mkmprice)
     
     return prices
 
+if __name__ == "__main__":
+    scrape(sys.argv)
