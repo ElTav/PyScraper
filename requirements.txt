@@ -10,9 +10,7 @@ itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23
 psycopg2==2.6.1
-PySide==1.2.2
 requests==2.7.0
-splinter==0.7.3
 SQLAlchemy==1.0.8
 urllib3==1.11
 Werkzeug==0.10.4
