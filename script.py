@@ -19,7 +19,7 @@ def cardinfo(cardname, setabbr):
     else:
         if setabbr == 'MM2':
             setname = 'Modern Masters 2015' #edge case 1
-        elif setabbr == 'CMD':
+        if setabbr == 'CMD':
             setname = 'Commander'
         else:
             setnameurl = 'http://api.mtgapi.com/v2/sets?code=' + setabbr
