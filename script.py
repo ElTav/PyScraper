@@ -19,7 +19,7 @@ def cardinfo(cardname, setabbr):
     else:
         if setabbr == 'MM2':
             setname = 'Modern Masters 2015' #edge case 1
-        if setabbr == 'CMD':
+        elif setabbr == 'CMD':
             setname = 'Commander'
         else:
             setnameurl = 'http://api.mtgapi.com/v2/sets?code=' + setabbr
@@ -53,15 +53,6 @@ def getmkmprice(cardname, setcode): #Gets the current price from MagicCardMarket
     price = mkmsoup.find("span", {"itemprop":"lowPrice"}).getText()
     return price
 
-def allindices(string, sub):
-    listindex = []
-    offset = 0
-    i = string.find(sub, offset)
-    while i >= 0:
-        listindex.append(i)
-        i = string.find(sub, i + 1)
-    return listindex
-    
 def getmtggoldfishprices(cardname, setname): # Gets current prices from several vendors
     
     
@@ -117,6 +108,8 @@ def getmtggoldfishprices(cardname, setname): # Gets current prices from several 
     
 def strikezone(cardname, setname, sell):
     cardname = cardname.replace(",", "")
+    if setname == "Future Sight":
+        setname = "Futuresight" #edge case
     if sell:
         szurl = 'http://shop.strikezoneonline.com/TUser?T={}%20{}&MC=CUSTS&MF=B&BUID=637&ST=D&CMD=Search'.format(cardname, setname)
     else:
