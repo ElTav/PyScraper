@@ -14,7 +14,7 @@ def index():
 def signup():
     card = request.form['card']
     set = request.form['set']
-    prices = script.scrape(card, set)
+    prices = script.scrape(card, set.upper())
     return render_template('cards.html', card=card, prices=prices)
     
     
